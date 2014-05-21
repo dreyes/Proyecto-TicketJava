@@ -4,12 +4,20 @@
  * and open the template in the editor.
  */
 
-package TicketJavaGUI.Eventos;
+package Eventos;
+
+import java.util.ArrayList;
 
 /**
  *
  * @author DReyes
  */
-public class Eventos {
+public class AdmEventos {
+    ArrayList<Evento> eventos;
+    
+    public AdmEventos(){
+        eventos = new ArrayList();
+    }
+    
     
 }

@@ -9,14 +9,26 @@
             <Property name="text" type="java.lang.String" value="Men&#xfa;"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="imenu_adminEventos">
+            <Menu class="javax.swing.JMenu" name="smenu_adminEventos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Administraci&#xf3;n de Eventos"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imenu_adminEventosActionPerformed"/>
-              </Events>
-            </MenuItem>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="ismenu_crearEditElimEvento">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Crear/Editar/Eliminar Evento"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ismenu_crearEditElimEventoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="ismenu_verEvento">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ver Evento"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="imenu_adminUsuarios">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Administraci&#xf3;n de Usuarios"/>

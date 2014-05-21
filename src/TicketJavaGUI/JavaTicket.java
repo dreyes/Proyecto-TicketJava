@@ -14,6 +14,7 @@ public class JavaTicket extends javax.swing.JFrame {
 
     IngresoUsuarios ingreso_usu;
     AdministradorUsuarios au = new AdministradorUsuarios();
+    AdministradorEventos ae = new AdministradorEventos();
     String usu;
     int tipo;
 
@@ -35,7 +36,8 @@ public class JavaTicket extends javax.swing.JFrame {
             case 0:
                 menu_menuPrincipal.setEnabled(true);
                 imenu_cerrSesion.setEnabled(true);
-                imenu_adminEventos.setEnabled(true);
+                ismenu_crearEditElimEvento.setEnabled(true);
+                smenu_adminEventos.setEnabled(true);
                 imenu_adminUsuarios.setEnabled(true);
                 imenu_reportes.setEnabled(true);
                 imenu_iniSesion.setEnabled(false);
@@ -44,24 +46,25 @@ public class JavaTicket extends javax.swing.JFrame {
             case 1:
                 menu_menuPrincipal.setEnabled(true);
                 imenu_cerrSesion.setEnabled(true);
-                lbl_saludo2.setText("Bienvenido "+u+"!");
-                imenu_adminEventos.setEnabled(true);
+                ismenu_crearEditElimEvento.setEnabled(true);
                 imenu_adminUsuarios.setEnabled(false);
                 imenu_reportes.setEnabled(true);
                 imenu_iniSesion.setEnabled(false);
+                lbl_saludo2.setText("Bienvenido "+u+"!");
                 break;
             case 2:
                 menu_menuPrincipal.setEnabled(true);
                 imenu_cerrSesion.setEnabled(true);
-                lbl_saludo2.setText("Bienvenido "+u+"!");
-                imenu_adminEventos.setEnabled(false);
+                ismenu_crearEditElimEvento.setEnabled(false);
                 imenu_adminUsuarios.setEnabled(false);
                 imenu_reportes.setEnabled(true);
                 imenu_iniSesion.setEnabled(false);
+                lbl_saludo2.setText("Bienvenido "+u+"!");
                 break;
             default:
                 menu_menuPrincipal.setEnabled(false);
                 imenu_cerrSesion.setEnabled(false);
+                imenu_iniSesion.setEnabled(true);
                 lbl_saludo2.setText("Bienvenido! Inicie Sesión para Continuar.");
                 break;
         }
@@ -86,7 +89,9 @@ public class JavaTicket extends javax.swing.JFrame {
         lbl_saludo2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menu_menuPrincipal = new javax.swing.JMenu();
-        imenu_adminEventos = new javax.swing.JMenuItem();
+        smenu_adminEventos = new javax.swing.JMenu();
+        ismenu_crearEditElimEvento = new javax.swing.JMenuItem();
+        ismenu_verEvento = new javax.swing.JMenuItem();
         imenu_adminUsuarios = new javax.swing.JMenuItem();
         imenu_reportes = new javax.swing.JMenuItem();
         menu_menuSesion = new javax.swing.JMenu();
@@ -102,13 +107,20 @@ public class JavaTicket extends javax.swing.JFrame {
 
         menu_menuPrincipal.setText("Menú");
 
-        imenu_adminEventos.setText("Administración de Eventos");
-        imenu_adminEventos.addActionListener(new java.awt.event.ActionListener() {
+        smenu_adminEventos.setText("Administración de Eventos");
+
+        ismenu_crearEditElimEvento.setText("Crear/Editar/Eliminar Evento");
+        ismenu_crearEditElimEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imenu_adminEventosActionPerformed(evt);
+                ismenu_crearEditElimEventoActionPerformed(evt);
             }
         });
-        menu_menuPrincipal.add(imenu_adminEventos);
+        smenu_adminEventos.add(ismenu_crearEditElimEvento);
+
+        ismenu_verEvento.setText("Ver Evento");
+        smenu_adminEventos.add(ismenu_verEvento);
+
+        menu_menuPrincipal.add(smenu_adminEventos);
 
         imenu_adminUsuarios.setText("Administración de Usuarios");
         imenu_adminUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -178,10 +190,6 @@ public class JavaTicket extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void imenu_adminEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_adminEventosActionPerformed
-       
-    }//GEN-LAST:event_imenu_adminEventosActionPerformed
-
     private void imenu_adminUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_adminUsuariosActionPerformed
        
         au.setVisible(true);
@@ -212,6 +220,10 @@ public class JavaTicket extends javax.swing.JFrame {
         
         verificarAcceso(-1,"");
     }//GEN-LAST:event_imenu_cerrSesionActionPerformed
+
+    private void ismenu_crearEditElimEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ismenu_crearEditElimEventoActionPerformed
+        ae.setVisible(true);
+    }//GEN-LAST:event_ismenu_crearEditElimEventoActionPerformed
 
     
     /**
@@ -252,16 +264,18 @@ public class JavaTicket extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem imenu_adminEventos;
     private javax.swing.JMenuItem imenu_adminUsuarios;
     private javax.swing.JMenuItem imenu_cerrSesion;
     private javax.swing.JMenuItem imenu_iniSesion;
     private javax.swing.JMenuItem imenu_proyecto;
     private javax.swing.JMenuItem imenu_reportes;
+    private javax.swing.JMenuItem ismenu_crearEditElimEvento;
+    private javax.swing.JMenuItem ismenu_verEvento;
     private javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JLabel lbl_saludo2;
     private javax.swing.JMenu menu_acercaDe;
     private javax.swing.JMenu menu_menuPrincipal;
     private javax.swing.JMenu menu_menuSesion;
+    private javax.swing.JMenu smenu_adminEventos;
     // End of variables declaration//GEN-END:variables
 }
