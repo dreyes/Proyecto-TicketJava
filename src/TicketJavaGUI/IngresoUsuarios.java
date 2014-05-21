@@ -16,11 +16,15 @@ import javax.swing.JOptionPane;
  */
 public class IngresoUsuarios extends javax.swing.JFrame {
 
-    AdmUsuarios usuarios = new AdmUsuarios();
-    /**
-     * Creates new form IngresoUsuarios
-     */
-    public IngresoUsuarios() {
+    static AdmUsuarios usuarios;
+    String usuario;
+    int tipo;
+    Usuario user;
+    private NewInterface newInterface;
+    
+    public IngresoUsuarios(AdmUsuarios usu) {
+        
+        usuarios = usu;
         initComponents();
     }
 
@@ -41,7 +45,12 @@ public class IngresoUsuarios extends javax.swing.JFrame {
         btn_ingresar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         lbl_saludo.setText("Bienvenidos al Sistema!");
 
@@ -121,16 +130,23 @@ public class IngresoUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
-        String usuario = (txt_usuario.getText());
+        String n_usuario = (txt_usuario.getText());
         String contra = String.valueOf(txt_contra.getPassword());
-        Usuario usu = usuarios.comprobarUsuario(usuario, contra);
-        if (usu != null) {
-            int tipo = usuarios.getTipo(usu);
+        user = usuarios.comprobarUsuario(n_usuario, contra);
+        
+        if (user != null) {
+            usuario = user.getNombre();
+            tipo = usuarios.getTipo(user);
             setVisible(false);
-            JavaTicket javaTicket = new JavaTicket(usu.getNombre(),tipo);
-            javaTicket.setVisible(true);
+            if(newInterface != null){
+                newInterface.UsuarioIngresando(usuario, tipo);
+            }
+            //JavaTicket javaTicket = new JavaTicket(usuario,tipo);
+            //javaTicket.setVisible(true);
             String s = String.valueOf(txt_contra.getPassword());
         } else {
+            txt_usuario.setText("");
+            txt_contra.setText("");
                 JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña "
                         + "incorrecta!", "Error de Ingreso", WIDTH);
        }
@@ -141,10 +157,19 @@ public class IngresoUsuarios extends javax.swing.JFrame {
         txt_contra.setText("");
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        
+    }//GEN-LAST:event_formWindowClosed
+
+    
+    public void setNewInterface(NewInterface i){
+        this.newInterface = i;
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -172,7 +197,7 @@ public class IngresoUsuarios extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new IngresoUsuarios().setVisible(true);
+                new IngresoUsuarios(usuarios).setVisible(true);
                 
             }
         });

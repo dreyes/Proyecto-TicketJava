@@ -12,31 +12,66 @@ package TicketJavaGUI;
  */
 public class JavaTicket extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JavaTicket 
-     */
+    IngresoUsuarios ingreso_usu;
+    AdministradorUsuarios au = new AdministradorUsuarios();
+    String usu;
+    int tipo;
+
+    public void setUsu(String usu) {
+        this.usu = usu;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
     
     public JavaTicket() {
+        
         initComponents();
     }
     
-    
-    public JavaTicket(String usu, int tipo) {
-        String usuario = usu;
-        initComponents();
-        lbl_saludo2.setText("Bienvenido "+usu+"!");
-        switch (tipo) {
+    private void verificarAcceso(int t,String u){
+        switch (t) {
+            case 0:
+                menu_menuPrincipal.setEnabled(true);
+                imenu_cerrSesion.setEnabled(true);
+                imenu_adminEventos.setEnabled(true);
+                imenu_adminUsuarios.setEnabled(true);
+                imenu_reportes.setEnabled(true);
+                imenu_iniSesion.setEnabled(false);
+                lbl_saludo2.setText("Bienvenido "+u+"!");
+                break;
             case 1:
-                menu_adminUsuarios.setEnabled(false);
+                menu_menuPrincipal.setEnabled(true);
+                imenu_cerrSesion.setEnabled(true);
+                lbl_saludo2.setText("Bienvenido "+u+"!");
+                imenu_adminEventos.setEnabled(true);
+                imenu_adminUsuarios.setEnabled(false);
+                imenu_reportes.setEnabled(true);
+                imenu_iniSesion.setEnabled(false);
                 break;
             case 2:
-                imenu_crearEvento.setEnabled(false);
-                imenu_eliminarEvento.setEnabled(false);
-                imenu_editarEvento.setEnabled(false);
+                menu_menuPrincipal.setEnabled(true);
+                imenu_cerrSesion.setEnabled(true);
+                lbl_saludo2.setText("Bienvenido "+u+"!");
+                imenu_adminEventos.setEnabled(false);
+                imenu_adminUsuarios.setEnabled(false);
+                imenu_reportes.setEnabled(true);
+                imenu_iniSesion.setEnabled(false);
                 break;
-            case 3:
+            default:
+                menu_menuPrincipal.setEnabled(false);
+                imenu_cerrSesion.setEnabled(false);
+                lbl_saludo2.setText("Bienvenido! Inicie Sesión para Continuar.");
                 break;
         }
+    }
+    
+    public JavaTicket(String u, int t) {
+        usu = u;
+        tipo = t;
+        initComponents();
+        verificarAcceso(-1,"");
     }
 
     /**
@@ -50,50 +85,75 @@ public class JavaTicket extends javax.swing.JFrame {
 
         lbl_saludo2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menu_adminEventos = new javax.swing.JMenu();
-        imenu_crearEvento = new javax.swing.JMenuItem();
-        imenu_eliminarEvento = new javax.swing.JMenuItem();
-        imenu_editarEvento = new javax.swing.JMenuItem();
-        imenu_verEvento = new javax.swing.JMenuItem();
-        menu_adminUsuarios = new javax.swing.JMenu();
-        menu_reportes = new javax.swing.JMenu();
+        menu_menuPrincipal = new javax.swing.JMenu();
+        imenu_adminEventos = new javax.swing.JMenuItem();
+        imenu_adminUsuarios = new javax.swing.JMenuItem();
+        imenu_reportes = new javax.swing.JMenuItem();
+        menu_menuSesion = new javax.swing.JMenu();
+        imenu_iniSesion = new javax.swing.JMenuItem();
+        imenu_cerrSesion = new javax.swing.JMenuItem();
+        menu_acercaDe = new javax.swing.JMenu();
+        imenu_proyecto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lbl_saludo2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lbl_saludo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        menu_adminEventos.setText("Adminitración de Eventos");
+        menu_menuPrincipal.setText("Menú");
 
-        imenu_crearEvento.setText("Crear un Evento");
-        imenu_crearEvento.addActionListener(new java.awt.event.ActionListener() {
+        imenu_adminEventos.setText("Administración de Eventos");
+        imenu_adminEventos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imenu_crearEventoActionPerformed(evt);
+                imenu_adminEventosActionPerformed(evt);
             }
         });
-        menu_adminEventos.add(imenu_crearEvento);
+        menu_menuPrincipal.add(imenu_adminEventos);
 
-        imenu_eliminarEvento.setText("Eliminar un Evento");
-        imenu_eliminarEvento.addActionListener(new java.awt.event.ActionListener() {
+        imenu_adminUsuarios.setText("Administración de Usuarios");
+        imenu_adminUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imenu_eliminarEventoActionPerformed(evt);
+                imenu_adminUsuariosActionPerformed(evt);
             }
         });
-        menu_adminEventos.add(imenu_eliminarEvento);
+        menu_menuPrincipal.add(imenu_adminUsuarios);
 
-        imenu_editarEvento.setText("Editar un Evento");
-        menu_adminEventos.add(imenu_editarEvento);
+        imenu_reportes.setText("Reportes");
+        menu_menuPrincipal.add(imenu_reportes);
 
-        imenu_verEvento.setText("Ver Evento");
-        menu_adminEventos.add(imenu_verEvento);
+        jMenuBar1.add(menu_menuPrincipal);
 
-        jMenuBar1.add(menu_adminEventos);
+        menu_menuSesion.setText("Sesión");
 
-        menu_adminUsuarios.setText("Administración de Usuarios");
-        jMenuBar1.add(menu_adminUsuarios);
+        imenu_iniSesion.setText("Iniciar Sesión");
+        imenu_iniSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imenu_iniSesionActionPerformed(evt);
+            }
+        });
+        menu_menuSesion.add(imenu_iniSesion);
 
-        menu_reportes.setText("Reportes");
-        jMenuBar1.add(menu_reportes);
+        imenu_cerrSesion.setText("Cerrar Sesión");
+        imenu_cerrSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imenu_cerrSesionActionPerformed(evt);
+            }
+        });
+        menu_menuSesion.add(imenu_cerrSesion);
+
+        jMenuBar1.add(menu_menuSesion);
+
+        menu_acercaDe.setText("Acerca de...");
+
+        imenu_proyecto.setText("Proyecto");
+        imenu_proyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imenu_proyectoActionPerformed(evt);
+            }
+        });
+        menu_acercaDe.add(imenu_proyecto);
+
+        jMenuBar1.add(menu_acercaDe);
 
         setJMenuBar(jMenuBar1);
 
@@ -101,31 +161,59 @@ public class JavaTicket extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_saludo2, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+                .addComponent(lbl_saludo2, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_saludo2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(lbl_saludo2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(425, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void imenu_crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_crearEventoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_imenu_crearEventoActionPerformed
+    private void imenu_adminEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_adminEventosActionPerformed
+       
+    }//GEN-LAST:event_imenu_adminEventosActionPerformed
 
-    private void imenu_eliminarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_eliminarEventoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_imenu_eliminarEventoActionPerformed
+    private void imenu_adminUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_adminUsuariosActionPerformed
+       
+        au.setVisible(true);
+    }//GEN-LAST:event_imenu_adminUsuariosActionPerformed
 
+    private void imenu_proyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_proyectoActionPerformed
+        
+    }//GEN-LAST:event_imenu_proyectoActionPerformed
+
+    private void imenu_iniSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_iniSesionActionPerformed
+        ingreso_usu = new IngresoUsuarios(au.usuarios);
+        ingreso_usu.setVisible(true);
+        
+        ingreso_usu.setNewInterface(new NewInterface() {
+
+            @Override
+            public void UsuarioIngresando(String usu, int tipo) {
+                verificarAcceso(tipo,usu);
+                System.out.println("Ingreso!");
+            }
+        
+        });
+        //String n_usu = au.iu.user.getNombre();
+        //lbl_saludo2.setText("Bienvenido "+n_usu+"!");
+    }//GEN-LAST:event_imenu_iniSesionActionPerformed
+
+    private void imenu_cerrSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_cerrSesionActionPerformed
+        
+        verificarAcceso(-1,"");
+    }//GEN-LAST:event_imenu_cerrSesionActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -156,21 +244,24 @@ public class JavaTicket extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JavaTicket().setVisible(true);
+                JavaTicket jt = new JavaTicket("",-1);
+                        jt.setVisible(true);
                 
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem imenu_crearEvento;
-    private javax.swing.JMenuItem imenu_editarEvento;
-    private javax.swing.JMenuItem imenu_eliminarEvento;
-    private javax.swing.JMenuItem imenu_verEvento;
+    private javax.swing.JMenuItem imenu_adminEventos;
+    private javax.swing.JMenuItem imenu_adminUsuarios;
+    private javax.swing.JMenuItem imenu_cerrSesion;
+    private javax.swing.JMenuItem imenu_iniSesion;
+    private javax.swing.JMenuItem imenu_proyecto;
+    private javax.swing.JMenuItem imenu_reportes;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JLabel lbl_saludo2;
-    private javax.swing.JMenu menu_adminEventos;
-    private javax.swing.JMenu menu_adminUsuarios;
-    private javax.swing.JMenu menu_reportes;
+    public javax.swing.JLabel lbl_saludo2;
+    private javax.swing.JMenu menu_acercaDe;
+    private javax.swing.JMenu menu_menuPrincipal;
+    private javax.swing.JMenu menu_menuSesion;
     // End of variables declaration//GEN-END:variables
 }
