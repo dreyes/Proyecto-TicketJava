@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package TicketJavaGUI;
+
+import Usuarios.Administrador;
+import Usuarios.Usuario;
+import Usuarios.UsuarioContenido;
 
 /**
  *
@@ -13,10 +16,12 @@ package TicketJavaGUI;
 public class JavaTicket extends javax.swing.JFrame {
 
     IngresoUsuarios ingreso_usu;
-    AdministradorUsuarios au = new AdministradorUsuarios();
+
+    AdministradorUsuarios au;
     AdministradorEventos ae = new AdministradorEventos();
-    String usu;
-    int tipo;
+    Usuario prueba;
+    private String usu;
+    private int tipo;
 
     public void setUsu(String usu) {
         this.usu = usu;
@@ -25,13 +30,15 @@ public class JavaTicket extends javax.swing.JFrame {
     public void setTipo(int tipo) {
         this.tipo = tipo;
     }
-    
+
     public JavaTicket() {
-        
+
         initComponents();
     }
-    
-    private void verificarAcceso(int t,String u){
+
+    private void verificarAcceso(int t, String u) {
+        tipo = t;
+        usu = u;
         switch (t) {
             case 0:
                 menu_menuPrincipal.setEnabled(true);
@@ -41,7 +48,7 @@ public class JavaTicket extends javax.swing.JFrame {
                 imenu_adminUsuarios.setEnabled(true);
                 imenu_reportes.setEnabled(true);
                 imenu_iniSesion.setEnabled(false);
-                lbl_saludo2.setText("Bienvenido "+u+"!");
+                lbl_saludo2.setText("Bienvenido " + u + "!");
                 break;
             case 1:
                 menu_menuPrincipal.setEnabled(true);
@@ -50,7 +57,7 @@ public class JavaTicket extends javax.swing.JFrame {
                 imenu_adminUsuarios.setEnabled(false);
                 imenu_reportes.setEnabled(true);
                 imenu_iniSesion.setEnabled(false);
-                lbl_saludo2.setText("Bienvenido "+u+"!");
+                lbl_saludo2.setText("Bienvenido " + u + "!");
                 break;
             case 2:
                 menu_menuPrincipal.setEnabled(true);
@@ -59,7 +66,7 @@ public class JavaTicket extends javax.swing.JFrame {
                 imenu_adminUsuarios.setEnabled(false);
                 imenu_reportes.setEnabled(true);
                 imenu_iniSesion.setEnabled(false);
-                lbl_saludo2.setText("Bienvenido "+u+"!");
+                lbl_saludo2.setText("Bienvenido " + u + "!");
                 break;
             default:
                 menu_menuPrincipal.setEnabled(false);
@@ -69,12 +76,13 @@ public class JavaTicket extends javax.swing.JFrame {
                 break;
         }
     }
-    
+
     public JavaTicket(String u, int t) {
+        au = new AdministradorUsuarios();
         usu = u;
         tipo = t;
         initComponents();
-        verificarAcceso(-1,"");
+        verificarAcceso(-1, "");
     }
 
     /**
@@ -191,41 +199,75 @@ public class JavaTicket extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void imenu_adminUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_adminUsuariosActionPerformed
-       
         au.setVisible(true);
     }//GEN-LAST:event_imenu_adminUsuariosActionPerformed
 
     private void imenu_proyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_proyectoActionPerformed
-        
+
     }//GEN-LAST:event_imenu_proyectoActionPerformed
 
     private void imenu_iniSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_iniSesionActionPerformed
-        ingreso_usu = new IngresoUsuarios(au.usuarios);
+        ingreso_usu = new IngresoUsuarios(au.getUsuarios());
         ingreso_usu.setVisible(true);
-        
+
         ingreso_usu.setNewInterface(new NewInterface() {
 
             @Override
-            public void UsuarioIngresando(String usu, int tipo) {
-                verificarAcceso(tipo,usu);
-                System.out.println("Ingreso!");
+            public void UsuarioIngresando(String usua, int tipo, Usuario u) {
+                verificarAcceso(tipo, usua);
+                prueba = u;
+                System.out.println(prueba + " ingresando");
             }
-        
+
         });
         //String n_usu = au.iu.user.getNombre();
         //lbl_saludo2.setText("Bienvenido "+n_usu+"!");
     }//GEN-LAST:event_imenu_iniSesionActionPerformed
 
     private void imenu_cerrSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_cerrSesionActionPerformed
-        
-        verificarAcceso(-1,"");
+
+        verificarAcceso(-1, "");
     }//GEN-LAST:event_imenu_cerrSesionActionPerformed
 
     private void ismenu_crearEditElimEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ismenu_crearEditElimEventoActionPerformed
         ae.setVisible(true);
+        ae.setNInterface(new EventUserInterface() {
+
+            @Override
+            public void EventoCreado(String cod) {
+                //Usuario usuario = au.getUsuarios().buscarUsuario(usu);
+                System.out.println(prueba);
+                if (prueba != null) {
+                    if (tipo == 0) {
+                        ((Administrador) prueba).agregarId(cod);
+                    } else if (tipo == 1) {
+                        ((UsuarioContenido) prueba).agregarId(cod);
+                    }
+                    System.out.println("Ingreso!");
+                }
+
+            }
+
+            @Override
+            public boolean EventoEliminado(String cod) {
+                //Usuario usuario = au.getUsuarios().buscarUsuario(usu);
+                System.out.println(prueba);
+                if (prueba != null) {
+                    if (tipo == 0) {
+                        if (((Administrador) prueba).eliminarId(cod))
+                            return true;
+                    } else if (tipo == 1) {
+                        if (((UsuarioContenido) prueba).eliminarId(cod))
+                            return true;
+                    }
+                }
+                return false;
+            }
+
+        });
+
     }//GEN-LAST:event_ismenu_crearEditElimEventoActionPerformed
 
-    
     /**
      * @param args the command line arguments
      */
@@ -256,9 +298,9 @@ public class JavaTicket extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JavaTicket jt = new JavaTicket("",-1);
-                        jt.setVisible(true);
-                
+                JavaTicket jt = new JavaTicket("", -1);
+                jt.setVisible(true);
+
             }
         });
     }

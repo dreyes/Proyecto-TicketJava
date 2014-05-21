@@ -18,11 +18,15 @@ import javax.swing.JOptionPane;
  */
 public class AdministradorUsuarios extends javax.swing.JFrame {
     
-    AdmUsuarios usuarios;
-    Usuario usu;
-    IngresoUsuarios iu;
-    String usuari;
-    int tip;
+    private AdmUsuarios usuarios;
+    private Usuario usu;
+    private IngresoUsuarios iu;
+    private String usuari;
+    private int tip;
+
+    public AdmUsuarios getUsuarios() {
+        return usuarios;
+    }
     
     
     public AdministradorUsuarios() {
@@ -363,6 +367,7 @@ public class AdministradorUsuarios extends javax.swing.JFrame {
         String edad = txt_edadCrearUsu.getText();
         String tipo = combo_tipoCrearUsu.getSelectedItem().toString();
         
+        
         if(usuarios.crearUsuario(nombre, contra, usuario, edad, tipo)){
             txt_nombreCrearUsu.setText("");
             txt_usuarioCrearUsu.setText("");
@@ -372,7 +377,7 @@ public class AdministradorUsuarios extends javax.swing.JFrame {
                         , "Administrador de Usuarios", WIDTH);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Usuario ya existe!"
-                        , "Error al Eliminar", WIDTH);
+                        , "Error al Crear", WIDTH);
         }
         
     }//GEN-LAST:event_btn_crearUsuarioActionPerformed

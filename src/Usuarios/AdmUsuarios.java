@@ -9,7 +9,7 @@ public class AdmUsuarios
     
     public AdmUsuarios(){
         usuarios = new ArrayList();
-        usuarios.add( new Administrador("Brandon","supersecreto","admin",20));
+        usuarios.add(new Administrador("Administrador","supersecreto","admin",20));
     }
     
     public int getTipo(Usuario usu){
@@ -29,22 +29,19 @@ public class AdmUsuarios
             if(x.getPassword().equals(pwd)){
                 return x;
             }
-            return null;
         }
         return null;
         
     }
     
     //buscador de usernames
-    public Usuario buscarUsuario(String userName)
-    {
-        for( Usuario napky : usuarios)
-        {
-            if(napky.userName.equalsIgnoreCase(userName))
-            return napky;
+    public Usuario buscarUsuario(String user) {
+        for( Usuario napky : usuarios){
+            if(napky.getUserName().equalsIgnoreCase(user)){
+                return napky;
+            }
         }
         return null;
-        
     }
     
     public boolean crearUsuario(String nom, String pass, String user, String ed, String tip)

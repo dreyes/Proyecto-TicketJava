@@ -6,12 +6,11 @@
 
 package TicketJavaGUI;
 
-import Usuarios.Usuario;
-
 /**
  *
  * @author DReyes
  */
-public interface NewInterface {
-    public void UsuarioIngresando(String usu, int tipo, Usuario u);
+public interface EventUserInterface {
+    public void EventoCreado(String cod);
+    public boolean EventoEliminado(String cod);
 }

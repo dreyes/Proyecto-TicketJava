@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -53,37 +53,37 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                              <Component id="btn_crearUsuario1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_crearEvento" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lbl_contraCrearUsu1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbl_descCrearEve" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txt_contraCrearUsu1" min="-2" pref="134" max="-2" attributes="0"/>
+                                      <Component id="txt_descCrearEve" min="-2" pref="134" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lbl_usuarioCrearUsu1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbl_tituloCrearEve" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txt_usuarioCrearUsu1" min="-2" pref="134" max="-2" attributes="0"/>
+                                      <Component id="txt_tituloCrearEve" min="-2" pref="134" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lbl_nombreCrearUsu1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbl_codigoCrearEve" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txt_nombreCrearUsu1" min="-2" pref="134" max="-2" attributes="0"/>
+                                      <Component id="txt_codigoCrearEve" min="-2" pref="134" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lbl_edadCrearUsu2" min="-2" pref="101" max="-2" attributes="0"/>
-                                          <Component id="lbl_tipoCrearUsu1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lbl_edadCrearUsu1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_rentaCrearEve" min="-2" pref="101" max="-2" attributes="0"/>
+                                          <Component id="lbl_tipoCrearEve" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_fechaCrearEve" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txt_edadCrearUsu2" max="32767" attributes="0"/>
-                                          <Component id="txt_edadCrearUsu1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="combo_tipoCrearUsu1" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                                          <Component id="txt_rentaCrearEve" max="32767" attributes="0"/>
+                                          <Component id="txt_fechaCrearEve" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="combo_tipoCrearEve" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -98,116 +98,116 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbl_nombreCrearUsu1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_nombreCrearUsu1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_codigoCrearEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_codigoCrearEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbl_usuarioCrearUsu1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_usuarioCrearUsu1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_tituloCrearEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_tituloCrearEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbl_contraCrearUsu1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_contraCrearUsu1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_descCrearEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_descCrearEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbl_edadCrearUsu1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_edadCrearUsu1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_fechaCrearEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_fechaCrearEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_edadCrearUsu2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_edadCrearUsu2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_rentaCrearEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_rentaCrearEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="combo_tipoCrearUsu1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_tipoCrearUsu1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="combo_tipoCrearEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_tipoCrearEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_crearUsuario1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_crearEvento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="23" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lbl_nombreCrearUsu1">
+            <Component class="javax.swing.JLabel" name="lbl_codigoCrearEve">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Codigo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_nombreCrearUsu1">
+            <Component class="javax.swing.JTextField" name="txt_codigoCrearEve">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Usuario"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_nombreCrearUsu1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_codigoCrearEveActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_usuarioCrearUsu1">
+            <Component class="javax.swing.JLabel" name="lbl_tituloCrearEve">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Titulo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_usuarioCrearUsu1">
+            <Component class="javax.swing.JTextField" name="txt_tituloCrearEve">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Usuario"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_contraCrearUsu1">
+            <Component class="javax.swing.JLabel" name="lbl_descCrearEve">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_contraCrearUsu1">
+            <Component class="javax.swing.JTextField" name="txt_descCrearEve">
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_edadCrearUsu1">
+            <Component class="javax.swing.JLabel" name="lbl_fechaCrearEve">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Fecha de Evento"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_edadCrearUsu1">
+            <Component class="javax.swing.JTextField" name="txt_fechaCrearEve">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Usuario"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_tipoCrearUsu1">
+            <Component class="javax.swing.JLabel" name="lbl_tipoCrearEve">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tipo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="combo_tipoCrearUsu1">
+            <Component class="javax.swing.JComboBox" name="combo_tipoCrearEve">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
-                    <StringItem index="0" value="Administrativo"/>
-                    <StringItem index="1" value="De Contenido"/>
-                    <StringItem index="2" value="Limitado"/>
+                    <StringItem index="0" value="Deportivo"/>
+                    <StringItem index="1" value="Musical"/>
+                    <StringItem index="2" value="Religioso"/>
                   </StringArray>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_tipoCrearUsu1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_tipoCrearEveActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_crearUsuario1">
+            <Component class="javax.swing.JButton" name="btn_crearEvento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Crear Evento"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_crearUsuario1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_crearEventoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_edadCrearUsu2">
+            <Component class="javax.swing.JLabel" name="lbl_rentaCrearEve">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Renta"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_edadCrearUsu2">
+            <Component class="javax.swing.JTextField" name="txt_rentaCrearEve">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Usuario"/>
               </Properties>
@@ -231,11 +231,11 @@
                           <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lbl_nombreCrearUsu3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_tituloBuscEve" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txt_nombreCrearUsu3" min="-2" pref="151" max="-2" attributes="0"/>
+                              <Component id="txt_codigoBuscEve" min="-2" pref="151" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btn_crearUsuario3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_buscarEvento" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -246,25 +246,25 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                              <Component id="btn_crearUsuario2" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_editarEvento" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lbl_edadCrearUsu4" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
-                                  <Component id="lbl_tipoCrearUsu2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_edadCrearUsu3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_contraCrearUsu2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_usuarioCrearUsu2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_nombreCrearUsu2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_rentEditEve" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Component id="lbl_tipoEditEve" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_fechaEditEve" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_descEditEve" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_tituloEditEve" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_codigoEditEve" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="combo_tipoCrearUsu2" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                                  <Component id="txt_nombreCrearUsu2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txt_usuarioCrearUsu2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txt_edadCrearUsu3" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txt_contraCrearUsu2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txt_edadCrearUsu4" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                                  <Component id="combo_tipoEditEve" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                                  <Component id="txt_codigoEditEve" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_tituloEditEve" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_fechaEditEve" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_descEditEve" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_rentEditEve" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -277,149 +277,149 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_nombreCrearUsu3" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="lbl_nombreCrearUsu3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_crearUsuario3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_codigoBuscEve" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="lbl_tituloBuscEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_buscarEvento" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_nombreCrearUsu2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_nombreCrearUsu2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_codigoEditEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_codigoEditEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbl_usuarioCrearUsu2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_usuarioCrearUsu2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_tituloEditEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_tituloEditEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbl_contraCrearUsu2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_contraCrearUsu2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_descEditEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_descEditEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbl_edadCrearUsu3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_edadCrearUsu3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_fechaEditEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_fechaEditEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_edadCrearUsu4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_edadCrearUsu4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_rentEditEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_rentEditEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="combo_tipoCrearUsu2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_tipoCrearUsu2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="combo_tipoEditEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_tipoEditEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btn_crearUsuario2" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_editarEvento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="10" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lbl_nombreCrearUsu2">
+            <Component class="javax.swing.JLabel" name="lbl_codigoEditEve">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Codigo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_nombreCrearUsu2">
+            <Component class="javax.swing.JTextField" name="txt_codigoEditEve">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Usuario"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_nombreCrearUsu2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_codigoEditEveActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_usuarioCrearUsu2">
+            <Component class="javax.swing.JLabel" name="lbl_tituloEditEve">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Titulo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_usuarioCrearUsu2">
+            <Component class="javax.swing.JTextField" name="txt_tituloEditEve">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Usuario"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_contraCrearUsu2">
+            <Component class="javax.swing.JLabel" name="lbl_descEditEve">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_contraCrearUsu2">
+            <Component class="javax.swing.JTextField" name="txt_descEditEve">
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_edadCrearUsu3">
+            <Component class="javax.swing.JLabel" name="lbl_fechaEditEve">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Fecha de Evento"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_edadCrearUsu3">
+            <Component class="javax.swing.JTextField" name="txt_fechaEditEve">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Usuario"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_edadCrearUsu4">
+            <Component class="javax.swing.JLabel" name="lbl_rentEditEve">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Renta"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_edadCrearUsu4">
+            <Component class="javax.swing.JTextField" name="txt_rentEditEve">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Usuario"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_tipoCrearUsu2">
+            <Component class="javax.swing.JLabel" name="lbl_tipoEditEve">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tipo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="combo_tipoCrearUsu2">
+            <Component class="javax.swing.JComboBox" name="combo_tipoEditEve">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
-                    <StringItem index="0" value="Administrativo"/>
-                    <StringItem index="1" value="De Contenido"/>
-                    <StringItem index="2" value="Limitado"/>
+                    <StringItem index="0" value="Deportivo"/>
+                    <StringItem index="1" value="Musical"/>
+                    <StringItem index="2" value="Religioso"/>
                   </StringArray>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_tipoCrearUsu2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_tipoEditEveActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_crearUsuario2">
+            <Component class="javax.swing.JButton" name="btn_editarEvento">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Crear Evento"/>
+                <Property name="text" type="java.lang.String" value="Editar Evento"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_crearUsuario2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_editarEventoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator1">
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_nombreCrearUsu3">
+            <Component class="javax.swing.JLabel" name="lbl_tituloBuscEve">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Codigo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_nombreCrearUsu3">
+            <Component class="javax.swing.JTextField" name="txt_codigoBuscEve">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Usuario"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_nombreCrearUsu3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_codigoBuscEveActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_crearUsuario3">
+            <Component class="javax.swing.JButton" name="btn_buscarEvento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar Evento"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_crearUsuario3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_buscarEventoActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -440,13 +440,13 @@
                       <EmptySpace pref="98" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="btn_crearUsuario4" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_elimEvento" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="lbl_nombreCrearUsu4" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_codigoElimEve" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txt_nombreCrearUsu4" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="txt_codigoElimEve" min="-2" pref="134" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
@@ -458,36 +458,36 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="108" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbl_nombreCrearUsu4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_nombreCrearUsu4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_codigoElimEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_codigoElimEve" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="btn_crearUsuario4" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_elimEvento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lbl_nombreCrearUsu4">
+            <Component class="javax.swing.JLabel" name="lbl_codigoElimEve">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Codigo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_nombreCrearUsu4">
+            <Component class="javax.swing.JTextField" name="txt_codigoElimEve">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Usuario"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_nombreCrearUsu4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_codigoElimEveActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_crearUsuario4">
+            <Component class="javax.swing.JButton" name="btn_elimEvento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Eliminar Evento"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_crearUsuario4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_elimEventoActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

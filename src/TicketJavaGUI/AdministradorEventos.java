@@ -6,16 +6,24 @@
 
 package TicketJavaGUI;
 
+import Eventos.AdmEventos;
+import static java.awt.image.ImageObserver.WIDTH;
+import java.util.Calendar;
+import static java.util.Calendar.getInstance;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DReyes
  */
 public class AdministradorEventos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdministracionEventos
-     */
+    AdmEventos eventos;
+    private EventUserInterface nInterface;
+    
     public AdministradorEventos() {
+        eventos = new AdmEventos();
         initComponents();
     }
 
@@ -30,83 +38,83 @@ public class AdministradorEventos extends javax.swing.JFrame {
 
         Editar = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        lbl_nombreCrearUsu1 = new javax.swing.JLabel();
-        txt_nombreCrearUsu1 = new javax.swing.JTextField();
-        lbl_usuarioCrearUsu1 = new javax.swing.JLabel();
-        txt_usuarioCrearUsu1 = new javax.swing.JTextField();
-        lbl_contraCrearUsu1 = new javax.swing.JLabel();
-        txt_contraCrearUsu1 = new javax.swing.JTextField();
-        lbl_edadCrearUsu1 = new javax.swing.JLabel();
-        txt_edadCrearUsu1 = new javax.swing.JTextField();
-        lbl_tipoCrearUsu1 = new javax.swing.JLabel();
-        combo_tipoCrearUsu1 = new javax.swing.JComboBox();
-        btn_crearUsuario1 = new javax.swing.JButton();
-        lbl_edadCrearUsu2 = new javax.swing.JLabel();
-        txt_edadCrearUsu2 = new javax.swing.JTextField();
+        lbl_codigoCrearEve = new javax.swing.JLabel();
+        txt_codigoCrearEve = new javax.swing.JTextField();
+        lbl_tituloCrearEve = new javax.swing.JLabel();
+        txt_tituloCrearEve = new javax.swing.JTextField();
+        lbl_descCrearEve = new javax.swing.JLabel();
+        txt_descCrearEve = new javax.swing.JTextField();
+        lbl_fechaCrearEve = new javax.swing.JLabel();
+        txt_fechaCrearEve = new javax.swing.JTextField();
+        lbl_tipoCrearEve = new javax.swing.JLabel();
+        combo_tipoCrearEve = new javax.swing.JComboBox();
+        btn_crearEvento = new javax.swing.JButton();
+        lbl_rentaCrearEve = new javax.swing.JLabel();
+        txt_rentaCrearEve = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        lbl_nombreCrearUsu2 = new javax.swing.JLabel();
-        txt_nombreCrearUsu2 = new javax.swing.JTextField();
-        lbl_usuarioCrearUsu2 = new javax.swing.JLabel();
-        txt_usuarioCrearUsu2 = new javax.swing.JTextField();
-        lbl_contraCrearUsu2 = new javax.swing.JLabel();
-        txt_contraCrearUsu2 = new javax.swing.JTextField();
-        lbl_edadCrearUsu3 = new javax.swing.JLabel();
-        txt_edadCrearUsu3 = new javax.swing.JTextField();
-        lbl_edadCrearUsu4 = new javax.swing.JLabel();
-        txt_edadCrearUsu4 = new javax.swing.JTextField();
-        lbl_tipoCrearUsu2 = new javax.swing.JLabel();
-        combo_tipoCrearUsu2 = new javax.swing.JComboBox();
-        btn_crearUsuario2 = new javax.swing.JButton();
+        lbl_codigoEditEve = new javax.swing.JLabel();
+        txt_codigoEditEve = new javax.swing.JTextField();
+        lbl_tituloEditEve = new javax.swing.JLabel();
+        txt_tituloEditEve = new javax.swing.JTextField();
+        lbl_descEditEve = new javax.swing.JLabel();
+        txt_descEditEve = new javax.swing.JTextField();
+        lbl_fechaEditEve = new javax.swing.JLabel();
+        txt_fechaEditEve = new javax.swing.JTextField();
+        lbl_rentEditEve = new javax.swing.JLabel();
+        txt_rentEditEve = new javax.swing.JTextField();
+        lbl_tipoEditEve = new javax.swing.JLabel();
+        combo_tipoEditEve = new javax.swing.JComboBox();
+        btn_editarEvento = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        lbl_nombreCrearUsu3 = new javax.swing.JLabel();
-        txt_nombreCrearUsu3 = new javax.swing.JTextField();
-        btn_crearUsuario3 = new javax.swing.JButton();
+        lbl_tituloBuscEve = new javax.swing.JLabel();
+        txt_codigoBuscEve = new javax.swing.JTextField();
+        btn_buscarEvento = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        lbl_nombreCrearUsu4 = new javax.swing.JLabel();
-        txt_nombreCrearUsu4 = new javax.swing.JTextField();
-        btn_crearUsuario4 = new javax.swing.JButton();
+        lbl_codigoElimEve = new javax.swing.JLabel();
+        txt_codigoElimEve = new javax.swing.JTextField();
+        btn_elimEvento = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lbl_nombreCrearUsu1.setText("Codigo");
+        lbl_codigoCrearEve.setText("Codigo");
 
-        txt_nombreCrearUsu1.setToolTipText("Usuario");
-        txt_nombreCrearUsu1.addActionListener(new java.awt.event.ActionListener() {
+        txt_codigoCrearEve.setToolTipText("Usuario");
+        txt_codigoCrearEve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nombreCrearUsu1ActionPerformed(evt);
+                txt_codigoCrearEveActionPerformed(evt);
             }
         });
 
-        lbl_usuarioCrearUsu1.setText("Titulo");
+        lbl_tituloCrearEve.setText("Titulo");
 
-        txt_usuarioCrearUsu1.setToolTipText("Usuario");
+        txt_tituloCrearEve.setToolTipText("Usuario");
 
-        lbl_contraCrearUsu1.setText("Descripción");
+        lbl_descCrearEve.setText("Descripción");
 
-        lbl_edadCrearUsu1.setText("Fecha de Evento");
+        lbl_fechaCrearEve.setText("Fecha de Evento");
 
-        txt_edadCrearUsu1.setToolTipText("Usuario");
+        txt_fechaCrearEve.setToolTipText("Usuario");
 
-        lbl_tipoCrearUsu1.setText("Tipo");
+        lbl_tipoCrearEve.setText("Tipo");
 
-        combo_tipoCrearUsu1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrativo", "De Contenido", "Limitado" }));
-        combo_tipoCrearUsu1.addActionListener(new java.awt.event.ActionListener() {
+        combo_tipoCrearEve.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Deportivo", "Musical", "Religioso" }));
+        combo_tipoCrearEve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_tipoCrearUsu1ActionPerformed(evt);
+                combo_tipoCrearEveActionPerformed(evt);
             }
         });
 
-        btn_crearUsuario1.setText("Crear Evento");
-        btn_crearUsuario1.addActionListener(new java.awt.event.ActionListener() {
+        btn_crearEvento.setText("Crear Evento");
+        btn_crearEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_crearUsuario1ActionPerformed(evt);
+                btn_crearEventoActionPerformed(evt);
             }
         });
 
-        lbl_edadCrearUsu2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbl_edadCrearUsu2.setText("Renta");
+        lbl_rentaCrearEve.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbl_rentaCrearEve.setText("Renta");
 
-        txt_edadCrearUsu2.setToolTipText("Usuario");
+        txt_rentaCrearEve.setToolTipText("Usuario");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,32 +124,32 @@ public class AdministradorEventos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(130, 130, 130)
-                        .addComponent(btn_crearUsuario1))
+                        .addComponent(btn_crearEvento))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbl_contraCrearUsu1)
+                                .addComponent(lbl_descCrearEve)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_contraCrearUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_descCrearEve, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbl_usuarioCrearUsu1)
+                                .addComponent(lbl_tituloCrearEve)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_usuarioCrearUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_tituloCrearEve, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbl_nombreCrearUsu1)
+                                .addComponent(lbl_codigoCrearEve)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_nombreCrearUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_codigoCrearEve, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lbl_edadCrearUsu2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_tipoCrearUsu1)
-                                    .addComponent(lbl_edadCrearUsu1))
+                                    .addComponent(lbl_rentaCrearEve, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_tipoCrearEve)
+                                    .addComponent(lbl_fechaCrearEve))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_edadCrearUsu2)
-                                    .addComponent(txt_edadCrearUsu1)
-                                    .addComponent(combo_tipoCrearUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txt_rentaCrearEve)
+                                    .addComponent(txt_fechaCrearEve)
+                                    .addComponent(combo_tipoCrearEve, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -149,88 +157,88 @@ public class AdministradorEventos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nombreCrearUsu1)
-                    .addComponent(txt_nombreCrearUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_codigoCrearEve)
+                    .addComponent(txt_codigoCrearEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_usuarioCrearUsu1)
-                    .addComponent(txt_usuarioCrearUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_tituloCrearEve)
+                    .addComponent(txt_tituloCrearEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_contraCrearUsu1)
-                    .addComponent(txt_contraCrearUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_descCrearEve)
+                    .addComponent(txt_descCrearEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_edadCrearUsu1)
-                    .addComponent(txt_edadCrearUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_fechaCrearEve)
+                    .addComponent(txt_fechaCrearEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_edadCrearUsu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_edadCrearUsu2))
+                    .addComponent(txt_rentaCrearEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_rentaCrearEve))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(combo_tipoCrearUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_tipoCrearUsu1))
+                    .addComponent(combo_tipoCrearEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_tipoCrearEve))
                 .addGap(18, 18, 18)
-                .addComponent(btn_crearUsuario1)
+                .addComponent(btn_crearEvento)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
         Editar.addTab("Crear", jPanel1);
 
-        lbl_nombreCrearUsu2.setText("Codigo");
+        lbl_codigoEditEve.setText("Codigo");
 
-        txt_nombreCrearUsu2.setToolTipText("Usuario");
-        txt_nombreCrearUsu2.addActionListener(new java.awt.event.ActionListener() {
+        txt_codigoEditEve.setToolTipText("Usuario");
+        txt_codigoEditEve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nombreCrearUsu2ActionPerformed(evt);
+                txt_codigoEditEveActionPerformed(evt);
             }
         });
 
-        lbl_usuarioCrearUsu2.setText("Titulo");
+        lbl_tituloEditEve.setText("Titulo");
 
-        txt_usuarioCrearUsu2.setToolTipText("Usuario");
+        txt_tituloEditEve.setToolTipText("Usuario");
 
-        lbl_contraCrearUsu2.setText("Descripción");
+        lbl_descEditEve.setText("Descripción");
 
-        lbl_edadCrearUsu3.setText("Fecha de Evento");
+        lbl_fechaEditEve.setText("Fecha de Evento");
 
-        txt_edadCrearUsu3.setToolTipText("Usuario");
+        txt_fechaEditEve.setToolTipText("Usuario");
 
-        lbl_edadCrearUsu4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbl_edadCrearUsu4.setText("Renta");
+        lbl_rentEditEve.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbl_rentEditEve.setText("Renta");
 
-        txt_edadCrearUsu4.setToolTipText("Usuario");
+        txt_rentEditEve.setToolTipText("Usuario");
 
-        lbl_tipoCrearUsu2.setText("Tipo");
+        lbl_tipoEditEve.setText("Tipo");
 
-        combo_tipoCrearUsu2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrativo", "De Contenido", "Limitado" }));
-        combo_tipoCrearUsu2.addActionListener(new java.awt.event.ActionListener() {
+        combo_tipoEditEve.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Deportivo", "Musical", "Religioso" }));
+        combo_tipoEditEve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_tipoCrearUsu2ActionPerformed(evt);
+                combo_tipoEditEveActionPerformed(evt);
             }
         });
 
-        btn_crearUsuario2.setText("Crear Evento");
-        btn_crearUsuario2.addActionListener(new java.awt.event.ActionListener() {
+        btn_editarEvento.setText("Editar Evento");
+        btn_editarEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_crearUsuario2ActionPerformed(evt);
+                btn_editarEventoActionPerformed(evt);
             }
         });
 
-        lbl_nombreCrearUsu3.setText("Codigo");
+        lbl_tituloBuscEve.setText("Codigo");
 
-        txt_nombreCrearUsu3.setToolTipText("Usuario");
-        txt_nombreCrearUsu3.addActionListener(new java.awt.event.ActionListener() {
+        txt_codigoBuscEve.setToolTipText("Usuario");
+        txt_codigoBuscEve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nombreCrearUsu3ActionPerformed(evt);
+                txt_codigoBuscEveActionPerformed(evt);
             }
         });
 
-        btn_crearUsuario3.setText("Buscar Evento");
-        btn_crearUsuario3.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscarEvento.setText("Buscar Evento");
+        btn_buscarEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_crearUsuario3ActionPerformed(evt);
+                btn_buscarEventoActionPerformed(evt);
             }
         });
 
@@ -243,11 +251,11 @@ public class AdministradorEventos extends javax.swing.JFrame {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lbl_nombreCrearUsu3)
+                        .addComponent(lbl_tituloBuscEve)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_nombreCrearUsu3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_codigoBuscEve, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_crearUsuario3)
+                        .addComponent(btn_buscarEvento)
                         .addGap(0, 16, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -255,23 +263,23 @@ public class AdministradorEventos extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(87, 87, 87)
-                        .addComponent(btn_crearUsuario2))
+                        .addComponent(btn_editarEvento))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_edadCrearUsu4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_tipoCrearUsu2)
-                            .addComponent(lbl_edadCrearUsu3)
-                            .addComponent(lbl_contraCrearUsu2)
-                            .addComponent(lbl_usuarioCrearUsu2)
-                            .addComponent(lbl_nombreCrearUsu2))
+                            .addComponent(lbl_rentEditEve, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_tipoEditEve)
+                            .addComponent(lbl_fechaEditEve)
+                            .addComponent(lbl_descEditEve)
+                            .addComponent(lbl_tituloEditEve)
+                            .addComponent(lbl_codigoEditEve))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(combo_tipoCrearUsu2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_nombreCrearUsu2)
-                            .addComponent(txt_usuarioCrearUsu2)
-                            .addComponent(txt_edadCrearUsu3)
-                            .addComponent(txt_contraCrearUsu2)
-                            .addComponent(txt_edadCrearUsu4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(combo_tipoEditEve, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_codigoEditEve)
+                            .addComponent(txt_tituloEditEve)
+                            .addComponent(txt_fechaEditEve)
+                            .addComponent(txt_descEditEve)
+                            .addComponent(txt_rentEditEve, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -279,55 +287,55 @@ public class AdministradorEventos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_nombreCrearUsu3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_nombreCrearUsu3)
-                    .addComponent(btn_crearUsuario3))
+                    .addComponent(txt_codigoBuscEve, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_tituloBuscEve)
+                    .addComponent(btn_buscarEvento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_nombreCrearUsu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_nombreCrearUsu2))
+                    .addComponent(txt_codigoEditEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_codigoEditEve))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_usuarioCrearUsu2)
-                    .addComponent(txt_usuarioCrearUsu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_tituloEditEve)
+                    .addComponent(txt_tituloEditEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_contraCrearUsu2)
-                    .addComponent(txt_contraCrearUsu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_descEditEve)
+                    .addComponent(txt_descEditEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_edadCrearUsu3)
-                    .addComponent(txt_edadCrearUsu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_fechaEditEve)
+                    .addComponent(txt_fechaEditEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_edadCrearUsu4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_edadCrearUsu4))
+                    .addComponent(txt_rentEditEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_rentEditEve))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(combo_tipoCrearUsu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_tipoCrearUsu2))
+                    .addComponent(combo_tipoEditEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_tipoEditEve))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_crearUsuario2)
+                .addComponent(btn_editarEvento)
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
         Editar.addTab("Editar", jPanel2);
 
-        lbl_nombreCrearUsu4.setText("Codigo");
+        lbl_codigoElimEve.setText("Codigo");
 
-        txt_nombreCrearUsu4.setToolTipText("Usuario");
-        txt_nombreCrearUsu4.addActionListener(new java.awt.event.ActionListener() {
+        txt_codigoElimEve.setToolTipText("Usuario");
+        txt_codigoElimEve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nombreCrearUsu4ActionPerformed(evt);
+                txt_codigoElimEveActionPerformed(evt);
             }
         });
 
-        btn_crearUsuario4.setText("Eliminar Evento");
-        btn_crearUsuario4.addActionListener(new java.awt.event.ActionListener() {
+        btn_elimEvento.setText("Eliminar Evento");
+        btn_elimEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_crearUsuario4ActionPerformed(evt);
+                btn_elimEventoActionPerformed(evt);
             }
         });
 
@@ -339,12 +347,12 @@ public class AdministradorEventos extends javax.swing.JFrame {
                 .addContainerGap(98, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(btn_crearUsuario4)
+                        .addComponent(btn_elimEvento)
                         .addGap(24, 24, 24))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(lbl_nombreCrearUsu4)
+                        .addComponent(lbl_codigoElimEve)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_nombreCrearUsu4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_codigoElimEve, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(96, 96, 96))
         );
         jPanel3Layout.setVerticalGroup(
@@ -352,10 +360,10 @@ public class AdministradorEventos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(108, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nombreCrearUsu4)
-                    .addComponent(txt_nombreCrearUsu4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_codigoElimEve)
+                    .addComponent(txt_codigoElimEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addComponent(btn_crearUsuario4)
+                .addComponent(btn_elimEvento)
                 .addGap(110, 110, 110))
         );
 
@@ -376,49 +384,92 @@ public class AdministradorEventos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_nombreCrearUsu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreCrearUsu1ActionPerformed
+    private void txt_codigoCrearEveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codigoCrearEveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreCrearUsu1ActionPerformed
+    }//GEN-LAST:event_txt_codigoCrearEveActionPerformed
 
-    private void combo_tipoCrearUsu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_tipoCrearUsu1ActionPerformed
+    private void combo_tipoCrearEveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_tipoCrearEveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_combo_tipoCrearUsu1ActionPerformed
+    }//GEN-LAST:event_combo_tipoCrearEveActionPerformed
 
-    private void btn_crearUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearUsuario1ActionPerformed
+    private void btn_crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearEventoActionPerformed
+        String codigo = txt_codigoCrearEve.getText();
+        String titulo = txt_tituloCrearEve.getText();
+        String desc = txt_descCrearEve.getText();
+        Calendar fecha = getInstance();
+        String renta = txt_rentaCrearEve.getText();
+        String tipo = combo_tipoCrearEve.getSelectedItem().toString();
+        
+        if(eventos.crearEvento(codigo, titulo, desc, renta, fecha, tipo)){
+            
+            txt_codigoCrearEve.setText("");
+            txt_tituloCrearEve.setText("");
+            txt_descCrearEve.setText("");
+            txt_rentaCrearEve.setText("");
+            
+            if(nInterface != null){
+                nInterface.EventoCreado(codigo);
+            }
+            
+            JOptionPane.showMessageDialog(rootPane, "Evento creado satisfactoriamente!"
+                        , "Administrador de Eventos", WIDTH);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Codigo de Evento ya existe!"
+                        , "Error al Crear", WIDTH);
+        }
+    }//GEN-LAST:event_btn_crearEventoActionPerformed
+
+    private void txt_codigoEditEveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codigoEditEveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_crearUsuario1ActionPerformed
+    }//GEN-LAST:event_txt_codigoEditEveActionPerformed
 
-    private void txt_nombreCrearUsu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreCrearUsu2ActionPerformed
+    private void combo_tipoEditEveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_tipoEditEveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreCrearUsu2ActionPerformed
+    }//GEN-LAST:event_combo_tipoEditEveActionPerformed
 
-    private void combo_tipoCrearUsu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_tipoCrearUsu2ActionPerformed
+    private void btn_editarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarEventoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_combo_tipoCrearUsu2ActionPerformed
+    }//GEN-LAST:event_btn_editarEventoActionPerformed
 
-    private void btn_crearUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearUsuario2ActionPerformed
+    private void txt_codigoBuscEveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codigoBuscEveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_crearUsuario2ActionPerformed
+    }//GEN-LAST:event_txt_codigoBuscEveActionPerformed
 
-    private void txt_nombreCrearUsu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreCrearUsu3ActionPerformed
+    private void btn_buscarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarEventoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreCrearUsu3ActionPerformed
+    }//GEN-LAST:event_btn_buscarEventoActionPerformed
 
-    private void btn_crearUsuario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearUsuario3ActionPerformed
+    private void txt_codigoElimEveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codigoElimEveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_crearUsuario3ActionPerformed
+    }//GEN-LAST:event_txt_codigoElimEveActionPerformed
 
-    private void txt_nombreCrearUsu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreCrearUsu4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreCrearUsu4ActionPerformed
+    private void btn_elimEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_elimEventoActionPerformed
+        String codigo = txt_codigoElimEve.getText();
+        if(nInterface != null){
+            
+            int cod = Integer.parseInt(codigo);
+            if(eventos.buscarEvento(cod) != null){
+                txt_codigoElimEve.setText("");
 
-    private void btn_crearUsuario4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearUsuario4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_crearUsuario4ActionPerformed
+                if(nInterface.EventoEliminado(codigo)){
+                    eventos.eliminarEvento(codigo);
+                    JOptionPane.showMessageDialog(rootPane, "Evento eliminado satisfactoriamente!"
+                            , "Administrador de Eventos", WIDTH);
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Evento no fue creado por Usuario!"
+                            , "Error al Eliminar", WIDTH);
+                }
+            }else {
+                JOptionPane.showMessageDialog(rootPane, "Codigo de Evento no existe!"
+                        , "Error al Eliminar", WIDTH);
+            }
+        }
+    }//GEN-LAST:event_btn_elimEventoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    public void setNInterface(EventUserInterface i){
+        this.nInterface = i;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -453,41 +504,41 @@ public class AdministradorEventos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Editar;
-    private javax.swing.JButton btn_crearUsuario1;
-    private javax.swing.JButton btn_crearUsuario2;
-    private javax.swing.JButton btn_crearUsuario3;
-    private javax.swing.JButton btn_crearUsuario4;
-    private javax.swing.JComboBox combo_tipoCrearUsu1;
-    private javax.swing.JComboBox combo_tipoCrearUsu2;
+    private javax.swing.JButton btn_buscarEvento;
+    private javax.swing.JButton btn_crearEvento;
+    private javax.swing.JButton btn_editarEvento;
+    private javax.swing.JButton btn_elimEvento;
+    private javax.swing.JComboBox combo_tipoCrearEve;
+    private javax.swing.JComboBox combo_tipoEditEve;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lbl_contraCrearUsu1;
-    private javax.swing.JLabel lbl_contraCrearUsu2;
-    private javax.swing.JLabel lbl_edadCrearUsu1;
-    private javax.swing.JLabel lbl_edadCrearUsu2;
-    private javax.swing.JLabel lbl_edadCrearUsu3;
-    private javax.swing.JLabel lbl_edadCrearUsu4;
-    private javax.swing.JLabel lbl_nombreCrearUsu1;
-    private javax.swing.JLabel lbl_nombreCrearUsu2;
-    private javax.swing.JLabel lbl_nombreCrearUsu3;
-    private javax.swing.JLabel lbl_nombreCrearUsu4;
-    private javax.swing.JLabel lbl_tipoCrearUsu1;
-    private javax.swing.JLabel lbl_tipoCrearUsu2;
-    private javax.swing.JLabel lbl_usuarioCrearUsu1;
-    private javax.swing.JLabel lbl_usuarioCrearUsu2;
-    private javax.swing.JTextField txt_contraCrearUsu1;
-    private javax.swing.JTextField txt_contraCrearUsu2;
-    private javax.swing.JTextField txt_edadCrearUsu1;
-    private javax.swing.JTextField txt_edadCrearUsu2;
-    private javax.swing.JTextField txt_edadCrearUsu3;
-    private javax.swing.JTextField txt_edadCrearUsu4;
-    private javax.swing.JTextField txt_nombreCrearUsu1;
-    private javax.swing.JTextField txt_nombreCrearUsu2;
-    private javax.swing.JTextField txt_nombreCrearUsu3;
-    private javax.swing.JTextField txt_nombreCrearUsu4;
-    private javax.swing.JTextField txt_usuarioCrearUsu1;
-    private javax.swing.JTextField txt_usuarioCrearUsu2;
+    private javax.swing.JLabel lbl_codigoCrearEve;
+    private javax.swing.JLabel lbl_codigoEditEve;
+    private javax.swing.JLabel lbl_codigoElimEve;
+    private javax.swing.JLabel lbl_descCrearEve;
+    private javax.swing.JLabel lbl_descEditEve;
+    private javax.swing.JLabel lbl_fechaCrearEve;
+    private javax.swing.JLabel lbl_fechaEditEve;
+    private javax.swing.JLabel lbl_rentEditEve;
+    private javax.swing.JLabel lbl_rentaCrearEve;
+    private javax.swing.JLabel lbl_tipoCrearEve;
+    private javax.swing.JLabel lbl_tipoEditEve;
+    private javax.swing.JLabel lbl_tituloBuscEve;
+    private javax.swing.JLabel lbl_tituloCrearEve;
+    private javax.swing.JLabel lbl_tituloEditEve;
+    private javax.swing.JTextField txt_codigoBuscEve;
+    private javax.swing.JTextField txt_codigoCrearEve;
+    private javax.swing.JTextField txt_codigoEditEve;
+    private javax.swing.JTextField txt_codigoElimEve;
+    private javax.swing.JTextField txt_descCrearEve;
+    private javax.swing.JTextField txt_descEditEve;
+    private javax.swing.JTextField txt_fechaCrearEve;
+    private javax.swing.JTextField txt_fechaEditEve;
+    private javax.swing.JTextField txt_rentEditEve;
+    private javax.swing.JTextField txt_rentaCrearEve;
+    private javax.swing.JTextField txt_tituloCrearEve;
+    private javax.swing.JTextField txt_tituloEditEve;
     // End of variables declaration//GEN-END:variables
 }

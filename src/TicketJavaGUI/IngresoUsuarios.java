@@ -16,14 +16,14 @@ import javax.swing.JOptionPane;
  */
 public class IngresoUsuarios extends javax.swing.JFrame {
 
-    static AdmUsuarios usuarios;
+    private AdmUsuarios usuarios;
     String usuario;
     int tipo;
     Usuario user;
     private NewInterface newInterface;
     
     public IngresoUsuarios(AdmUsuarios usu) {
-        
+        usuarios = new AdmUsuarios();
         usuarios = usu;
         initComponents();
     }
@@ -139,11 +139,10 @@ public class IngresoUsuarios extends javax.swing.JFrame {
             tipo = usuarios.getTipo(user);
             setVisible(false);
             if(newInterface != null){
-                newInterface.UsuarioIngresando(usuario, tipo);
+                newInterface.UsuarioIngresando(usuario, tipo, user);
             }
             //JavaTicket javaTicket = new JavaTicket(usuario,tipo);
             //javaTicket.setVisible(true);
-            String s = String.valueOf(txt_contra.getPassword());
         } else {
             txt_usuario.setText("");
             txt_contra.setText("");
@@ -197,7 +196,7 @@ public class IngresoUsuarios extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new IngresoUsuarios(usuarios).setVisible(true);
+                new IngresoUsuarios(null).setVisible(true);
                 
             }
         });

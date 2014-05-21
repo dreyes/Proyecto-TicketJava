@@ -17,6 +17,29 @@ public class UsuarioContenido extends Usuario
         return super.toString() + " " + tipo;
     }
     
+    public boolean agregarId(String cod){
+        int codigo = Integer.parseInt(cod);
+        ids.add(codigo);
+        return true;
+    }
     
+    public boolean buscarId(String cod){
+        int codigo = Integer.parseInt(cod);
+        for(Integer i: ids){
+            if(i == codigo){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean eliminarId(String cod){
+        if(buscarId(cod)){
+            int codigo = Integer.parseInt(cod);
+            ids.remove(codigo);
+            return true;
+        }
+        return false;
+    }
     
 }
