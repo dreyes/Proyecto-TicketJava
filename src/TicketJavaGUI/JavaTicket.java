@@ -16,9 +16,10 @@ import Usuarios.UsuarioContenido;
 public class JavaTicket extends javax.swing.JFrame {
 
     IngresoUsuarios ingreso_usu;
-
+    VerEvento ver_evento;
     AdministradorUsuarios au;
-    AdministradorEventos ae = new AdministradorEventos();
+    AdministradorEventos ae;
+    Reportes rep;
     Usuario prueba;
     private String usu;
     private int tipo;
@@ -79,6 +80,7 @@ public class JavaTicket extends javax.swing.JFrame {
 
     public JavaTicket(String u, int t) {
         au = new AdministradorUsuarios();
+        ae = new AdministradorEventos();
         usu = u;
         tipo = t;
         initComponents();
@@ -126,6 +128,11 @@ public class JavaTicket extends javax.swing.JFrame {
         smenu_adminEventos.add(ismenu_crearEditElimEvento);
 
         ismenu_verEvento.setText("Ver Evento");
+        ismenu_verEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ismenu_verEventoActionPerformed(evt);
+            }
+        });
         smenu_adminEventos.add(ismenu_verEvento);
 
         menu_menuPrincipal.add(smenu_adminEventos);
@@ -139,6 +146,11 @@ public class JavaTicket extends javax.swing.JFrame {
         menu_menuPrincipal.add(imenu_adminUsuarios);
 
         imenu_reportes.setText("Reportes");
+        imenu_reportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imenu_reportesActionPerformed(evt);
+            }
+        });
         menu_menuPrincipal.add(imenu_reportes);
 
         jMenuBar1.add(menu_menuPrincipal);
@@ -264,9 +276,33 @@ public class JavaTicket extends javax.swing.JFrame {
                 return false;
             }
 
+            @Override
+            public boolean EventoEditado(String cod1, String cod2) {
+                if (prueba != null) {
+                    if (tipo == 0) {
+                        if (((Administrador) prueba).editarId(cod1, cod2))
+                            return true;
+                    } else if (tipo == 1) {
+                        if (((UsuarioContenido) prueba).editarId(cod1, cod2))
+                            return true;
+                    }
+                }
+                return false;
+            }
+
         });
 
     }//GEN-LAST:event_ismenu_crearEditElimEventoActionPerformed
+
+    private void ismenu_verEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ismenu_verEventoActionPerformed
+        ver_evento = new VerEvento(ae.getEventos());
+        ver_evento.setVisible(true);
+    }//GEN-LAST:event_ismenu_verEventoActionPerformed
+
+    private void imenu_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_reportesActionPerformed
+        rep = new Reportes(ae.getEventos());
+        rep.setVisible(true);
+    }//GEN-LAST:event_imenu_reportesActionPerformed
 
     /**
      * @param args the command line arguments

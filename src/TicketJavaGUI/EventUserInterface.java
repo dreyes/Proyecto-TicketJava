@@ -13,4 +13,5 @@ package TicketJavaGUI;
 public interface EventUserInterface {
     public void EventoCreado(String cod);
     public boolean EventoEliminado(String cod);
+    public boolean EventoEditado(String cod1, String cod2);
 }

@@ -8,6 +8,8 @@ package TicketJavaGUI;
 
 import Usuarios.AdmUsuarios;
 import Usuarios.Usuario;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -133,7 +135,7 @@ public class IngresoUsuarios extends javax.swing.JFrame {
         String n_usuario = (txt_usuario.getText());
         String contra = String.valueOf(txt_contra.getPassword());
         user = usuarios.comprobarUsuario(n_usuario, contra);
-        
+       
         if (user != null) {
             usuario = user.getNombre();
             tipo = usuarios.getTipo(user);

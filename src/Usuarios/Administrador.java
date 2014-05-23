@@ -2,9 +2,9 @@ package Usuarios;
 
 import java.util.ArrayList;
 
-public class Administrador extends Usuario
+public final class Administrador extends Usuario
 {
-    private String tipo = "Administrador";
+    final static String tipo = "Administrador";
     
     ArrayList<String> ids = new ArrayList();
     
@@ -19,14 +19,14 @@ public class Administrador extends Usuario
         return super.toString() + " " + tipo;
     }
     
-    public boolean agregarId(String cod){
+    public final boolean agregarId(String cod){
         //int codigo = Integer.parseInt(cod);
         //ids.add(codigo);
         ids.add(cod);
         return true;
     }
     
-    public boolean buscarId(String cod){
+    public final boolean buscarId(String cod){
         //int codigo = Integer.parseInt(cod);
         //for(Integer i: ids){
             //if(i == codigo){
@@ -39,10 +39,28 @@ public class Administrador extends Usuario
         return false;
     }
     
-    public boolean eliminarId(String cod){
-        if(buscarId(cod)){
-            //int codigo = Integer.parseInt(cod);
-            ids.remove(cod);
+    public final String buscarId2(String cod){
+        //int codigo = Integer.parseInt(cod);
+        //for(Integer i: ids){
+            //if(i == codigo){
+       for(String i: ids){
+            if(i.equals(cod)){         
+                return i;
+                
+            }
+        }
+        return null;
+    }
+    
+    public final boolean eliminarId(String cod){
+        return buscarId(cod);
+    }
+
+    public final boolean editarId(String cod1, String cod2) {
+        String i = buscarId2(cod1);
+        if(i != null){
+            ids.remove(i);
+            ids.add(cod2);
             return true;
         }
         return false;

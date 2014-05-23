@@ -89,22 +89,12 @@ public class AdministradorUsuarios extends javax.swing.JFrame {
         lbl_nombreCrearUsu.setText("Nombre Completo");
 
         txt_nombreCrearUsu.setToolTipText("Usuario");
-        txt_nombreCrearUsu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nombreCrearUsuActionPerformed(evt);
-            }
-        });
 
         lbl_edadCrearUsu.setText("Edad");
 
         txt_edadCrearUsu.setToolTipText("Usuario");
 
         combo_tipoCrearUsu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrativo", "De Contenido", "Limitado" }));
-        combo_tipoCrearUsu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_tipoCrearUsuActionPerformed(evt);
-            }
-        });
 
         lbl_tipoCrearUsu.setText("Tipo");
 
@@ -355,10 +345,6 @@ public class AdministradorUsuarios extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void combo_tipoCrearUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_tipoCrearUsuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_combo_tipoCrearUsuActionPerformed
-
     private void btn_crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearUsuarioActionPerformed
         
         String nombre = txt_nombreCrearUsu.getText();
@@ -381,10 +367,6 @@ public class AdministradorUsuarios extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btn_crearUsuarioActionPerformed
-
-    private void txt_nombreCrearUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreCrearUsuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreCrearUsuActionPerformed
 
     private void btn_eliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarUsuarioActionPerformed
         String usuario = txt_usuarioElimUsu.getText();

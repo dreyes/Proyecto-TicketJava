@@ -1,8 +1,8 @@
 package Usuarios;
 
-public class UsuarioLimitado extends Usuario
+public final class UsuarioLimitado extends Usuario
 {
-    private final String tipo = "Usuario de tipo limitado";
+    final static String tipo = "Usuario de tipo limitado";
     
     public UsuarioLimitado(String nombre,String password, String userName,int edad) 
     {
