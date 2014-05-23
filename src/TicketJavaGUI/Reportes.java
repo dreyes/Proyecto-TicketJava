@@ -171,12 +171,15 @@ public class Reportes extends javax.swing.JFrame {
         }
         
         if(al != null){
+            System.out.println("al: "+al);
             for(int x =0; x < al.size(); x++){
-                int m = al.indexOf(x);
+                String m = al.get(x).toString();
+                System.out.println("m: "+m);
                 for(int y =0; y < event.getEventos().size(); y++){
-                    Evento ev = event.getEventos().get(x);
-                    int n = event.getEventos().get(y).getCodigo_evento();
-                    if(m==n){
+                    Evento ev = event.getEventos().get(y);
+                    System.out.println("ev: "+ev);
+                    String n = String.valueOf(event.getEventos().get(y).getCodigo_evento());
+                    if(m.equals(n)){
                         String codigo = String.valueOf(ev.getCodigo_evento());
                         String titulo = ev.getTitulo_evento();
                         String monto = String.valueOf(ev.getRenta());
@@ -828,13 +831,13 @@ public class Reportes extends javax.swing.JFrame {
         int d1 = Integer.parseInt(dia1.getSelectedItem().toString());
         int m1 = Integer.parseInt(mes1.getSelectedItem().toString());
         int a1 = Integer.parseInt(ano1.getSelectedItem().toString());
-        fecha1.set(a1, m1, d1);
+        fecha1.set(a1, m1-1, d1);
         
         Calendar fecha2 = new GregorianCalendar();
         int d2 = Integer.parseInt(dia2.getSelectedItem().toString());
         int m2 = Integer.parseInt(mes2.getSelectedItem().toString());
         int a2 = Integer.parseInt(ano2.getSelectedItem().toString());
-        fecha2.set(a2, m2, d2);
+        fecha2.set(a2, m2-1, d2);
         
         for(int x =0; x < event.getEventos().size(); x++){
             Evento n = event.getEventos().get(x);

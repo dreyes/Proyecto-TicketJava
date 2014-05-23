@@ -1157,7 +1157,7 @@ public class AdministradorEventos extends javax.swing.JFrame {
         int dia = Integer.parseInt(combo_diaEditEve.getSelectedItem().toString());
         int mes = Integer.parseInt(combo_mesEditEve.getSelectedItem().toString());
         int ano = Integer.parseInt(combo_anoEditEve.getSelectedItem().toString());
-        fecha.set(ano, mes, dia);
+        fecha.set(ano, mes-1, dia);
 
         String tip = "";
         switch(type) {
@@ -1286,7 +1286,7 @@ public class AdministradorEventos extends javax.swing.JFrame {
         int dia = Integer.parseInt(combo_diaCrearEve.getSelectedItem().toString());
         int mes = Integer.parseInt(combo_mesCrearEve.getSelectedItem().toString());
         int ano = Integer.parseInt(combo_anoCrearEve.getSelectedItem().toString());
-        fecha.set(ano, mes, dia);
+        fecha.set(ano, mes-1, dia);
 
         //Campos Adicionales Deporte
         String equipo1 = txt_equipo1CrearEve.getText();
