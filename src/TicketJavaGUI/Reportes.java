@@ -11,6 +11,11 @@ import Eventos.Evento;
 import Eventos.EventoDeportivo;
 import Eventos.EventoMusical;
 import Eventos.EventoReligioso;
+import Usuarios.Administrador;
+import Usuarios.Usuario;
+import Usuarios.UsuarioContenido;
+import Usuarios.UsuarioLimitado;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -23,10 +28,15 @@ import javax.swing.table.DefaultTableModel;
 public class Reportes extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
+    DefaultTableModel model1;
     DefaultTableModel model2;
+    DefaultTableModel model3;
+    DefaultTableModel model4;
     AdmEventos event;
+    Usuario user;
+    ArrayList al; 
     
-    public Reportes(AdmEventos ae) {
+    public Reportes(AdmEventos ae, Usuario usu, ArrayList arr) {
         
         int dep=0, mus=0, rel=0;
         int dep2=0, mus2=0, rel2=0;
@@ -34,30 +44,52 @@ public class Reportes extends javax.swing.JFrame {
         double depo=0, musi=0, reli=0;
         double depo2=0, musi2=0, reli2=0;
         double depo3=0, musi3=0, reli3=0;
-        Calendar cal = new GregorianCalendar();
+        Calendar cal = Calendar.getInstance();
         event = new AdmEventos();
         event = ae;
+        user = usu;
+        al = new ArrayList();
+        al = arr;
         modelo = new DefaultTableModel();
         modelo.addColumn("CODIGO");
         modelo.addColumn("TIPO");
         modelo.addColumn("TITULO");
         modelo.addColumn("FECHA");
         modelo.addColumn("MONTO");
+        model1 = new DefaultTableModel();
+        model1.addColumn("CODIGO");
+        model1.addColumn("TIPO");
+        model1.addColumn("TITULO");
+        model1.addColumn("FECHA");
+        model1.addColumn("MONTO");
         model2 = new DefaultTableModel();
         model2.addColumn("CODIGO");
         model2.addColumn("TIPO");
         model2.addColumn("TITULO");
         model2.addColumn("FECHA");
         model2.addColumn("MULTA");
+        model3 = new DefaultTableModel();
+        model3.addColumn("ID");
+        model3.addColumn("TIPO");
+        model3.addColumn("TITULO");
+        model3.addColumn("MONTO");
+        model4 = new DefaultTableModel();
+        model4.addColumn("CODIGO");
+        model4.addColumn("TIPO");
+        model4.addColumn("TITULO");
+        model4.addColumn("FECHA");
+        model4.addColumn("MONTO");
         initComponents();
         t_realizados.setModel(modelo);
-        t_futuros.setModel(modelo);
+        t_futuros.setModel(model1);
         t_cancelados.setModel(model2);
+        t_usuario.setModel(model3);
+        t_porfecha.setModel(model4);
         
         for(int x =0; x < event.getEventos().size(); x++){
             Evento n = event.getEventos().get(x);
             
-            if(n.getFecha_evento().before(cal)){
+            if(n.getFecha_evento().getTimeInMillis()<=cal.getTimeInMillis()){
                 String cod = String.valueOf(n.getCodigo_evento());
                 String tipo="";
                 if (n instanceof EventoDeportivo){
@@ -83,7 +115,7 @@ public class Reportes extends javax.swing.JFrame {
                 String datos[] = {cod, tipo, tit, fecha, monto};
                 modelo.addRow(datos);
                 
-            } else if (n.getFecha_evento().after(cal)) {
+            } else if (n.getFecha_evento().getTimeInMillis()>cal.getTimeInMillis()) {
                 if (!(n.isEstado_cancelado())) {
                     String cod = String.valueOf(n.getCodigo_evento());
                     String tipo="";
@@ -108,7 +140,7 @@ public class Reportes extends javax.swing.JFrame {
                     String monto = String.valueOf(n.getRenta());
 
                     String datos[] = {cod, tipo, tit, fecha, monto};
-                    modelo.addRow(datos);    
+                    model1.addRow(datos);    
                 } else {
                     String cod = String.valueOf(n.getCodigo_evento());
                     String tipo="";
@@ -133,10 +165,41 @@ public class Reportes extends javax.swing.JFrame {
                     String monto = String.valueOf(n.getRenta());
 
                     String datos[] = {cod, tipo, tit, fecha, monto};
-                    modelo.addRow(datos);
+                    model2.addRow(datos);
                 }
             }
         }
+        
+        if(al != null){
+            for(int x =0; x < al.size(); x++){
+                int m = al.indexOf(x);
+                for(int y =0; y < event.getEventos().size(); y++){
+                    Evento ev = event.getEventos().get(x);
+                    int n = event.getEventos().get(y).getCodigo_evento();
+                    if(m==n){
+                        String codigo = String.valueOf(ev.getCodigo_evento());
+                        String titulo = ev.getTitulo_evento();
+                        String monto = String.valueOf(ev.getRenta());
+                        String tipo = "";
+                        if(ev instanceof EventoDeportivo)
+                            tipo = "Evento Deportivo";
+                        else if(ev instanceof EventoMusical)
+                            tipo = "Evento Musical";
+                        else if(ev instanceof EventoReligioso)
+                            tipo = "Evento Religioso";
+                        
+                        String datos[] = {codigo, tipo, titulo, monto};
+                        model3.addRow(datos);
+                    }
+                }
+            }
+            
+        }
+        else if(user instanceof UsuarioContenido)
+            user = ((UsuarioContenido)user);
+        else if(user instanceof UsuarioLimitado)
+            user = null;
+            
         
         deport.setText(String.valueOf(dep));
         music.setText(String.valueOf(mus));
@@ -159,7 +222,10 @@ public class Reportes extends javax.swing.JFrame {
         music5.setText(String.valueOf(musi3));
         relig5.setText(String.valueOf(reli3));
         
+        datos_usuario.setText(user.toString());
+        
     }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -208,15 +274,34 @@ public class Reportes extends javax.swing.JFrame {
         relig4 = new javax.swing.JTextField();
         relig5 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        t_porfecha = new javax.swing.JTable();
+        lbl_fechaCrearEve = new javax.swing.JLabel();
+        dia1 = new javax.swing.JComboBox();
+        mes1 = new javax.swing.JComboBox();
+        ano1 = new javax.swing.JComboBox();
+        lbl_fechaCrearEve1 = new javax.swing.JLabel();
+        dia2 = new javax.swing.JComboBox();
+        mes2 = new javax.swing.JComboBox();
+        ano2 = new javax.swing.JComboBox();
+        BuscarEventos = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        deport6 = new javax.swing.JTextField();
+        music6 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        relig6 = new javax.swing.JTextField();
+        total_gen = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        datos_usuario = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        t_cancelados1 = new javax.swing.JTable();
+        t_usuario = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         t_realizados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -255,7 +340,7 @@ public class Reportes extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
@@ -346,7 +431,7 @@ public class Reportes extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
@@ -437,7 +522,7 @@ public class Reportes extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
@@ -491,28 +576,7 @@ public class Reportes extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Eventos Cancelados", jPanel3);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 507, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Ingreso por Fecha", jPanel4);
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setWrapStyleWord(true);
-        jScrollPane4.setViewportView(jTextArea1);
-
-        jLabel10.setText("Datos del Usuario");
-
-        t_cancelados1.setModel(new javax.swing.table.DefaultTableModel(
+        t_porfecha.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -523,7 +587,163 @@ public class Reportes extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane5.setViewportView(t_cancelados1);
+        jScrollPane6.setViewportView(t_porfecha);
+
+        lbl_fechaCrearEve.setText("Fecha Inicial");
+
+        dia1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        mes1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+
+        ano1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
+
+        lbl_fechaCrearEve1.setText("Fecha Final");
+
+        dia2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        mes2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+
+        ano2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
+
+        BuscarEventos.setText("Buscar Eventos entre Fechas");
+        BuscarEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarEventosActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Eventos Deportivos");
+
+        deport6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deport6ActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Eventos Musicales");
+
+        jLabel14.setText("Eventos Religiosos");
+
+        total_gen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                total_genActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("Total Generado");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(lbl_fechaCrearEve1)
+                                .addGap(6, 6, 6)
+                                .addComponent(dia2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(mes2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ano2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(lbl_fechaCrearEve)
+                                .addGap(6, 6, 6)
+                                .addComponent(dia1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(mes1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ano1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(BuscarEventos, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(total_gen, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane6))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(deport6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(62, 62, 62)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(music6, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(relig6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(14, 14, 14))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dia1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mes1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ano1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_fechaCrearEve)
+                    .addComponent(BuscarEventos))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dia2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mes2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ano2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_fechaCrearEve1)
+                    .addComponent(total_gen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deport6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(music6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(relig6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Ingreso por Fecha", jPanel4);
+
+        datos_usuario.setColumns(20);
+        datos_usuario.setLineWrap(true);
+        datos_usuario.setRows(5);
+        datos_usuario.setWrapStyleWord(true);
+        jScrollPane4.setViewportView(datos_usuario);
+
+        jLabel10.setText("Datos del Usuario");
+
+        t_usuario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane5.setViewportView(t_usuario);
 
         jLabel11.setText("Eventos Creados por el Usuario");
 
@@ -532,19 +752,19 @@ public class Reportes extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addComponent(jLabel10)
-                        .addComponent(jScrollPane4)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -552,7 +772,7 @@ public class Reportes extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(74, 74, 74))
         );
 
         jTabbedPane1.addTab("Perfil de Usuario", jPanel5);
@@ -573,6 +793,7 @@ public class Reportes extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void deportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deportActionPerformed
@@ -598,6 +819,68 @@ public class Reportes extends javax.swing.JFrame {
     private void deport5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deport5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_deport5ActionPerformed
+
+    private void BuscarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarEventosActionPerformed
+        int dep4=0, mus4=0, rel4=0;
+        double total=0;
+        
+        Calendar fecha1 = new GregorianCalendar();
+        int d1 = Integer.parseInt(dia1.getSelectedItem().toString());
+        int m1 = Integer.parseInt(mes1.getSelectedItem().toString());
+        int a1 = Integer.parseInt(ano1.getSelectedItem().toString());
+        fecha1.set(a1, m1, d1);
+        
+        Calendar fecha2 = new GregorianCalendar();
+        int d2 = Integer.parseInt(dia2.getSelectedItem().toString());
+        int m2 = Integer.parseInt(mes2.getSelectedItem().toString());
+        int a2 = Integer.parseInt(ano2.getSelectedItem().toString());
+        fecha2.set(a2, m2, d2);
+        
+        for(int x =0; x < event.getEventos().size(); x++){
+            Evento n = event.getEventos().get(x);
+            
+            if(n.getFecha_evento().getTimeInMillis()<fecha2.getTimeInMillis()){
+                if (n.getFecha_evento().getTimeInMillis()>fecha1.getTimeInMillis()) {
+                    String cod = String.valueOf(n.getCodigo_evento());
+                    String tipo="";
+                    if (n instanceof EventoDeportivo){
+                        tipo = "Evento Deportivo";
+                        dep4++;
+                    } else if (n instanceof EventoMusical){
+                        tipo = "Evento Musical";
+                        mus4++;
+                    } else if (n instanceof EventoReligioso){
+                        tipo = "Evento Religioso";
+                        rel4++;
+                    }
+                    String tit = n.getTitulo_evento();
+                    Calendar f = n.getFecha_evento();
+                    
+                    String fecha = (String.valueOf(f.get(5))+"/"+String.valueOf(f.get(2))+"/"+
+                            String.valueOf(f.get(1)));
+                    String monto = String.valueOf(n.getRenta());
+                    total += n.getRenta();
+                    String datos[] = {cod, tipo, tit, fecha, monto};
+                    model4.addRow(datos);
+                }
+                
+            }
+        }
+        
+        deport6.setText(String.valueOf(dep4));
+        music6.setText(String.valueOf(mus4));
+        relig6.setText(String.valueOf(rel4));
+        total_gen.setText(String.valueOf(total));
+        
+    }//GEN-LAST:event_BuscarEventosActionPerformed
+
+    private void deport6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deport6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deport6ActionPerformed
+
+    private void total_genActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_total_genActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_total_genActionPerformed
 
     /**
      * @param args the command line arguments
@@ -629,21 +912,32 @@ public class Reportes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reportes(null).setVisible(true);
+                new Reportes(null,null,null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BuscarEventos;
+    private javax.swing.JComboBox ano1;
+    private javax.swing.JComboBox ano2;
+    private javax.swing.JTextArea datos_usuario;
     private javax.swing.JTextField deport;
     private javax.swing.JTextField deport1;
     private javax.swing.JTextField deport2;
     private javax.swing.JTextField deport3;
     private javax.swing.JTextField deport4;
     private javax.swing.JTextField deport5;
+    private javax.swing.JTextField deport6;
+    private javax.swing.JComboBox dia1;
+    private javax.swing.JComboBox dia2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -662,23 +956,31 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lbl_fechaCrearEve;
+    private javax.swing.JLabel lbl_fechaCrearEve1;
+    private javax.swing.JComboBox mes1;
+    private javax.swing.JComboBox mes2;
     private javax.swing.JTextField music;
     private javax.swing.JTextField music1;
     private javax.swing.JTextField music2;
     private javax.swing.JTextField music3;
     private javax.swing.JTextField music4;
     private javax.swing.JTextField music5;
+    private javax.swing.JTextField music6;
     private javax.swing.JTextField relig;
     private javax.swing.JTextField relig1;
     private javax.swing.JTextField relig2;
     private javax.swing.JTextField relig3;
     private javax.swing.JTextField relig4;
     private javax.swing.JTextField relig5;
+    private javax.swing.JTextField relig6;
     private javax.swing.JTable t_cancelados;
-    private javax.swing.JTable t_cancelados1;
     private javax.swing.JTable t_futuros;
+    private javax.swing.JTable t_porfecha;
     private javax.swing.JTable t_realizados;
+    private javax.swing.JTable t_usuario;
+    private javax.swing.JTextField total_gen;
     // End of variables declaration//GEN-END:variables
 }

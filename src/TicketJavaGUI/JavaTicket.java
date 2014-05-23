@@ -8,6 +8,7 @@ package TicketJavaGUI;
 import Usuarios.Administrador;
 import Usuarios.Usuario;
 import Usuarios.UsuarioContenido;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,6 +24,7 @@ public class JavaTicket extends javax.swing.JFrame {
     Usuario prueba;
     private String usu;
     private int tipo;
+    private ArrayList<String> arr;
 
     public void setUsu(String usu) {
         this.usu = usu;
@@ -300,7 +302,15 @@ public class JavaTicket extends javax.swing.JFrame {
     }//GEN-LAST:event_ismenu_verEventoActionPerformed
 
     private void imenu_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imenu_reportesActionPerformed
-        rep = new Reportes(ae.getEventos());
+        ArrayList al = null;
+        if (prueba != null) {
+                    if (tipo == 0) {
+                        al = ((Administrador) prueba).getIds();
+                    } else if (tipo == 1) {
+                        al = ((UsuarioContenido) prueba).getIds();
+                    }
+        }
+        rep = new Reportes(ae.getEventos(),prueba, al);
         rep.setVisible(true);
     }//GEN-LAST:event_imenu_reportesActionPerformed
 

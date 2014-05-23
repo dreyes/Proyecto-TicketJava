@@ -25,6 +25,10 @@ public final class Administrador extends Usuario
         ids.add(cod);
         return true;
     }
+
+    public ArrayList<String> getIds() {
+        return ids;
+    }
     
     public final boolean buscarId(String cod){
         //int codigo = Integer.parseInt(cod);

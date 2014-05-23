@@ -23,6 +23,10 @@ public final class UsuarioContenido extends Usuario
         ids.add(cod);
         return true;
     }
+
+    public ArrayList<String> getIds() {
+        return ids;
+    }
     
     public boolean buscarId(String cod){
         //int codigo = Integer.parseInt(cod);

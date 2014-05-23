@@ -54,13 +54,22 @@ public class AdmEventos {
     }
     
     public boolean eliminarEvento(String cod){
-        Calendar f = new GregorianCalendar();
+        Calendar f12 = Calendar.getInstance();
+        System.out.println("f: "+f12);
         int codigo = Integer.parseInt(cod);
         Evento x = buscarEvento(codigo);
         if(x != null){
             x.setEstado_cancelado(true);
+            System.out.println("x: "+x.getFecha_evento());
             double n = x.getRenta();
-            if (x.getFecha_evento().getTimeInMillis()-f.getTimeInMillis() <= 86400000) {
+            long j1 =(x.getFecha_evento().getTimeInMillis());
+            long j2 =(f12.getTimeInMillis());
+            System.out.println("j1: "+j1);
+            System.out.println("j2: "+j2);
+            long j = (j1-j2);
+            System.out.println(j);
+            if (j <= 86400000 && j >0) {
+                System.out.println("X="+x);
                 if(x instanceof EventoDeportivo || x instanceof EventoMusical)
                     x.setRenta(n*0.5);
             } else {
